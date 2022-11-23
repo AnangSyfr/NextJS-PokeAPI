@@ -1,7 +1,10 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const PokemonList = ({ pokemons }: any) => {
+  const router = useRouter();
   return (
     <div
       style={{
@@ -22,11 +25,11 @@ const PokemonList = ({ pokemons }: any) => {
             border: "1px solid gray",
             margin: "10px",
             textAlign: "center",
+            cursor: "pointer",
           }}
+          onClick={() => router.push(`/pokemon/${pokemon.name}`)}
         >
-          <Link href={`pokemon/${pokemon.name}`}>
-            <h1 style={{ textTransform: "capitalize" }}>{pokemon.name}</h1>
-          </Link>
+          <h1 style={{ textTransform: "capitalize" }}>{pokemon.name}</h1>
         </div>
       ))}
     </div>
